@@ -2,11 +2,15 @@
   "name": "wallaby-angular-filesort",
   "version": "0.0.1",
   "description": "WallabyJS preprocessor to sort AngularJS files",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "build": "babel src -d dist --source-maps",
+    "prebuild": "npm run clean -s",
+    "build": "babel src -d lib --source-maps both",
+    "clean": "rimraf lib coverage",
     "test": "mocha --require babel-core/register --compilers js:babel-core/register test/*.spec.js",
-    "tdd": "mocha --watch --require babel-core/register --compilers js:babel-core/register test/*.spec.js"
+    "test:watch": "npm run test -- --watch",
+    "pretest:cover": "rimraf coverage",
+    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- test"
   },
   "keywords": [
     "angular",
@@ -14,6 +18,10 @@
     "wallaby",
     "preprocessor"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanwischkaemper/wallaby-angular-filesort.git"
+  },
   "author": "Ryan Wischkaemper",
   "license": "MIT",
   "dependencies": {
@@ -24,10 +32,12 @@
   },
   "devDependencies": {
     "babel-cli": "^6.7.5",
-    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-core": "^6.7.7",
     "babel-preset-es2015": "^6.6.0",
     "babel-register": "^6.7.2",
     "chai": "^3.5.0",
-    "mocha": "^2.4.5"
+    "istanbul": "1.0.0-alpha.2",
+    "mocha": "^2.4.5",
+    "rimraf": "^2.5.2"
   }
 }

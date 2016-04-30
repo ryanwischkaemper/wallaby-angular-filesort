@@ -1,7 +1,7 @@
-import {AngularFileSort} from './sort';
+import { AngularFileSortProcessor } from './processor';
 
-export default function transform(opts){
-	return new AngularFileSort(opts).createPostprocessor();
+export default function transform(opts) {
+  return new AngularFileSortProcessor(opts).createPostprocessor();
 }
 
 

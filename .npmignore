@@ -1,0 +1,8 @@
+examples/
+test/
+src/
+.babelrc
+.editorconfig
+wallaby.js
+coverage
+.istanbul.yml

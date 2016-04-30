@@ -1,4 +1,4 @@
-var sorter = require('../dist/index');
+var sorter = require('../../lib/index');
 
 var sorterProcessor = sorter({
   whitelist: ['app/**/*.js']
@@ -12,7 +12,7 @@ module.exports = function () {
       { "pattern": "lib/angular.js", "instrument": false },
       { "pattern": "lib/angular-mocks.js", "instrument": false },
 
-      { "pattern": "app/**/*.js", "load":false}
+      { "pattern": "app/**/*.js", "load":false }
     ],
 
     tests: [
@@ -20,7 +20,6 @@ module.exports = function () {
     ],
 
     postprocessor: sorterProcessor,
-    debug: true,
-    testFramework: 'jasmine'
+    debug: true
   }
 };

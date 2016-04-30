@@ -3,7 +3,7 @@ describe('some tests', function () {
   var $controller;
   
   beforeEach(function () {
-    angular.mock.module('doit');
+    angular.mock.module('feature3');
   });
   
   beforeEach(function () {
@@ -13,7 +13,8 @@ describe('some tests', function () {
   });
   
   it('should work', function () {    
-    var ctrl = $controller('heyt');
+    var ctrl = $controller('main');
     expect(ctrl).toBeDefined();
   });
-})
+
+});
