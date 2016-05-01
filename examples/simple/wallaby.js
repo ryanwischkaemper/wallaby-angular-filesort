@@ -1,4 +1,4 @@
-var sorter = require('../../lib/index');
+var sorter = require('../../lib/index').transform;
 
 var sorterProcessor = sorter({
   whitelist: ['app/**/*.js']

@@ -4,6 +4,7 @@
   "description": "WallabyJS preprocessor to sort AngularJS files",
   "main": "lib/index.js",
   "scripts": {
+    "prepublish": "npm run build -s",
     "prebuild": "rimraf lib",
     "build": "babel src -d lib --source-maps both",
     "test": "mocha --require babel-core/register --compilers js:babel-core/register test/*.spec.js",
