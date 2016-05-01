@@ -17,11 +17,15 @@ function makeNewLoggerMock(){
   };
 }
 
-export function makeWallabyFileMock(path) {
+export function makeWallabyFileMock(path,isTest = false) {
   return {
     path,
     fullPath: `full-${path}`,
-    content: ''
+    content: '',
+    test: isTest,
+    getContent: function() {
+      return Promise.resolve(null)
+    }
   };
 }
 

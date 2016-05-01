@@ -1,4 +1,4 @@
-import {AngularFileSorter} from '../src/sorter';
+import {FileSorter} from '../src/FileSorter';
 import * as chai from 'chai';
 import { makeNewWallabyMock, makeNgDepsMock, makeWallabyFileMock } from './wallaby-mock';
 
@@ -18,13 +18,13 @@ describe('AngularFileSorter', () => {
   });
 
   it('Should instatiate', () => {
-    let sorter = new AngularFileSorter();
+    let sorter = new FileSorter();
     assert.isDefined(sorter, 'sorter has been defined');
   });
 
   describe('isDependecyUsedInAnyDeclaration', () => {
     it('should return false if no angular modules are present', ()=> {
-      let sorter = new AngularFileSorter();
+      let sorter = new FileSorter();
       let ngDeps = {};
 
       let result = sorter.isDependecyUsedInAnyDeclaration(null, ngDeps);
@@ -33,7 +33,7 @@ describe('AngularFileSorter', () => {
     });
 
     it('should return true if angular modules are present and contain the dependency', ()=> {
-      let sorter = new AngularFileSorter();
+      let sorter = new FileSorter();
       const dependency = 'app';
       let ngDeps = {modules: {app: {}}};
 
@@ -43,7 +43,7 @@ describe('AngularFileSorter', () => {
     });
 
     it('Should return true if the dependency is present within the dependencies of each angular module', ()=> {
-      let sorter = new AngularFileSorter();
+      let sorter = new FileSorter();
 
       const dependency = 'app';
       let ngDeps = {modules: {core: [dependency]}};
@@ -54,7 +54,7 @@ describe('AngularFileSorter', () => {
     });
 
     it('Should return false if the dependency is not present within the dependencies of each angular module', ()=> {
-      let sorter = new AngularFileSorter();
+      let sorter = new FileSorter();
 
       const dependency = 'app';
       let ngDeps = {modules: {core: []}};
@@ -69,7 +69,7 @@ describe('AngularFileSorter', () => {
   describe('isAngularFile', () => {
     it('should return true only if file is in whitelist', () => {
       const whitelist = ['ctrl.js'];
-      let sorter = new AngularFileSorter();
+      let sorter = new FileSorter();
 
       let file = {path: 'ctrl.js'};
       let result = sorter.isAngularFile(file, whitelist);
@@ -79,7 +79,7 @@ describe('AngularFileSorter', () => {
   });
 
   describe('sort', () => {
-    xit('should return a sorted array', () => {
+    it('should return a sorted array', () => {
       let moduleFiles = {
         'feature1': {},
         'doit': {},
@@ -104,7 +104,7 @@ describe('AngularFileSorter', () => {
 
       const expected = ['core', 'feature2', 'doit', 'ctrl', 'feature1', 'app'];
 
-      const sorter = new AngularFileSorter(wallabyMock.logger);
+      const sorter = new FileSorter(wallabyMock.logger);
       sorter.moduleFiles = moduleFiles;
       sorter.sortNodes = nodes;
       sorter.sortEdges = edges;
@@ -113,7 +113,7 @@ describe('AngularFileSorter', () => {
 
       result.should.be.instanceOf(Array);
       console.log(result);
-      //result.should.deep.equal(expected);
+     // result.should.deep.equal(expected);
     });
 
     xit('should return a sorted array2', () => {
@@ -145,7 +145,7 @@ describe('AngularFileSorter', () => {
       
       const expected = [{}, 'ctrl', 'app', 'core', 'feature2', 'doit'];
 
-      const sorter = new AngularFileSorter(wallabyMock.logger);
+      const sorter = new FileSorter(wallabyMock.logger);
       sorter.moduleFiles = moduleFiles;
       sorter.sortNodes = nodes;
       sorter.sortEdges = edges;
@@ -153,9 +153,6 @@ describe('AngularFileSorter', () => {
       let result = sorter.sort();
 
       result.should.be.instanceOf(Array);
-      // console.log(sorter.sortNodes);
-      // console.log(sorter.sortEdges)
-      // console.log(result);
       result.should.deep.equal(expected);
     });
   });

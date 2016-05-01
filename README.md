@@ -21,7 +21,7 @@ npm install wallaby-angular-filesort --save-dev
 
 ```javascript
 var wallabyAngularFilesort = require('wallaby-angular-filesort');
-var wallabyPostprocessor = wallabyAngularFilesort.transform({
+var wallabyPostprocessor = wallabyAngularFilesort.create({
   whitelist: ['src/**/*.js']
 });
 

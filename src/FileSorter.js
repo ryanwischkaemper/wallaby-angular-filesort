@@ -2,7 +2,7 @@ import ngDep from 'ng-dependencies';
 import * as toposort from 'toposort';
 import * as minimatch from 'minimatch';
 
-export class AngularFileSorter {
+export class FileSorter {
   constructor(logger) {
     this.logger = logger;
 

@@ -1,6 +1,6 @@
-var sorter = require('../../lib/index').transform;
+var wallabyAngularFilesort  = require('../../lib/index');
 
-var sorterProcessor = sorter({
+var wallabyPostprocessor  = wallabyAngularFilesort.create({
   whitelist: ['app/**/*.js']
 });
 
@@ -19,7 +19,7 @@ module.exports = function () {
       "test/*.spec.js"
     ],
 
-    postprocessor: sorterProcessor,
+    postprocessor: wallabyPostprocessor,
     debug: true
   }
 };
