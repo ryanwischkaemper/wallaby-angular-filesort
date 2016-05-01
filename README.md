@@ -2,16 +2,20 @@ Wallaby Angular Filesort Postprocessor
 ---
 
 [![Build Status](https://travis-ci.org/ryanwischkaemper/wallaby-angular-filesort.svg?branch=master)](https://travis-ci.org/ryanwischkaemper/wallaby-angular-filesort)
+[![Coverage Status](https://coveralls.io/repos/github/ryanwischkaemper/wallaby-angular-filesort/badge.svg?branch=master)](https://coveralls.io/github/ryanwischkaemper/wallaby-angular-filesort?branch=master)
 
 #Installation
 
-`npm install wallaby-angular-filesort`
+```bash
+npm install wallaby-angular-filesort --save-dev
+```
+
 
 #Usage
 
 // Wallaby.js configuration
 
-```
+```javascript
 var wallabyAngularFilesort = require('wallaby-angular-filesort');
 var wallabyPostprocessor = wallabyAngularFilesort({
   whitelist: ['src/**/*.js']

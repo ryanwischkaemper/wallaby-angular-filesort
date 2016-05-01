@@ -4,13 +4,12 @@
   "description": "WallabyJS preprocessor to sort AngularJS files",
   "main": "lib/index.js",
   "scripts": {
-    "prebuild": "npm run clean -s",
+    "prebuild": "rimraf lib",
     "build": "babel src -d lib --source-maps both",
-    "clean": "rimraf lib coverage",
     "test": "mocha --require babel-core/register --compilers js:babel-core/register test/*.spec.js",
     "test:watch": "npm run test -- --watch",
     "pretest:cover": "rimraf coverage",
-    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- test"
+    "test:cover": "babel-node ./node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- test -R spec"
   },
   "keywords": [
     "angular",
@@ -38,6 +37,7 @@
     "chai": "^3.5.0",
     "istanbul": "1.0.0-alpha.2",
     "mocha": "^2.4.5",
+    "mocha-lcov-reporter": "^1.2.0",
     "rimraf": "^2.5.2"
   }
 }
