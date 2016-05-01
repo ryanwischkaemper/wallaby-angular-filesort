@@ -17,7 +17,7 @@ describe('AngularFileSortProcessor', () => {
     wallabyMock = undefined;
   });
 
-  it('Should instatiate', () => {
+  it('Should instantiate', () => {
     const processor = new AngularFileSortProcessor();
     assert.isDefined(processor, 'processor has been defined');
   });

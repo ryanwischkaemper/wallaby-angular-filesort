@@ -6,3 +6,5 @@ src/
 wallaby.js
 coverage
 .istanbul.yml
+.travis.yml
+.idea

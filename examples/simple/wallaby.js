@@ -12,7 +12,7 @@ module.exports = function () {
       { "pattern": "lib/angular.js", "instrument": false },
       { "pattern": "lib/angular-mocks.js", "instrument": false },
 
-      { "pattern": "app/**/*.js", "load":false }
+       "app/**/*.js"
     ],
 
     tests: [

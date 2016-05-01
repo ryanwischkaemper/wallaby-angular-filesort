@@ -21,13 +21,12 @@ export class AngularFileSortProcessor {
       this.entryFiles = AngularFileSortProcessor.findEntryFiles(this.allTrackedFiles,
         this.options.whitelist);
 
-      const fileContentPromises = [];
-      Object.keys(this.entryFiles).forEach(key => {
-        fileContentPromises.push(this.entryFiles[key].getContent().then(content => {
-          this.entryFiles[key].content = content;
-        }));
-      });
-
+      const fileContentPromises = Object.keys(this.entryFiles)
+        .map(key => {
+          return this.entryFiles[key].getContent()
+            .then(content => this.entryFiles[key].content = content);
+        });
+      
       return this.resolveNewFilePromises(fileContentPromises, wallaby);
     };
   }
@@ -47,18 +46,10 @@ export class AngularFileSortProcessor {
           // No angular module references found, so do nothing
           if (!finalSortedFiles || !finalSortedFiles.length) resolve();
 
-          const createFilePromises = [];
+          const createFilePromises = finalSortedFiles
+            .map((file,index) => wallaby.setFileOrder({file:file,order:file.order+index}));
 
-          _.forEach(finalSortedFiles, (file, index) => {
-            createFilePromises.push(wallaby.createFile({
-              path: `${file.path}.ordered.js`,
-              content: file.content,
-              order: file.order + index,
-              original: file
-            }));
-          });
-
-          this.logger.debug('ANGULARFILESORT EMITTING %s FILES',
+          this.logger.debug('ANGULARFILESORT REORDERING %s FILES',
             createFilePromises.length);
 
           return Promise.all(createFilePromises).then(() => resolve())

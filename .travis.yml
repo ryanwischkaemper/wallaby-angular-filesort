@@ -6,9 +6,15 @@ node_js:
 script:
     - npm test
     - npm run build
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
 after_script:
     - npm run test:cover
     - "npm install coveralls@2 && cat ./coverage/lcov.info | coveralls"
+
+notifications:
+  email: false
 
 # whitelist
 branches:
