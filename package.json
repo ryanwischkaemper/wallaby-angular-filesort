@@ -1,6 +1,6 @@
 {
   "name": "wallaby-angular-filesort",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "WallabyJS preprocessor to sort AngularJS files",
   "main": "lib/index.js",
   "scripts": {
