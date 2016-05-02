@@ -34,9 +34,9 @@ describe('PostProcessor', () => {
         let fileManager = new FileManager();
         let spy = sinon.spy(fileManager,'findEntryFiles');
 
-        let sut = new PostProcessor({}, fileManager, wallabyMock);
+        let sut = new PostProcessor({}, fileManager);
 
-        return sut.create()().then(() => {
+        return sut.create()(wallabyMock).then(() => {
           spy.restore();
           spy.callCount.should.be.equal(0);
         });
@@ -49,9 +49,9 @@ describe('PostProcessor', () => {
         let fileManager = new FileManager();
         let spy = sinon.spy(fileManager,'populateFileContents');
 
-        let sut = new PostProcessor({}, fileManager, wallabyMock);
+        let sut = new PostProcessor({}, fileManager);
 
-        return sut.create()().then(() => {
+        return sut.create()(wallabyMock).then(() => {
           spy.restore();
           spy.callCount.should.be.equal(0);
         });
@@ -70,9 +70,9 @@ describe('PostProcessor', () => {
         let fileManager = new FileManager();
         let spy = sinon.spy(fileManager,'findEntryFiles');
 
-        let sut = new PostProcessor({whitelist}, fileManager, wallabyMock);
+        let sut = new PostProcessor({whitelist}, fileManager);
 
-        return sut.create()().then(() => {
+        return sut.create()(wallabyMock).then(() => {
           spy.restore();
           
           spy.callCount.should.be.equal(1);

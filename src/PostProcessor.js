@@ -2,18 +2,18 @@ import {FileManager} from './FileManager';
 import {FileSorter} from './FileSorter';
 
 export class PostProcessor {
-  constructor(options,fileManager, wallaby) {
+  constructor(options,fileManager) {
     this.options = typeof(options) === 'object' ? options : {};
 
     this.logger = {};
-    this.wallaby = wallaby || null;
+
     this.fileManager = fileManager || new FileManager();
   }
 
-  create() {
+  create(w) {
     return wallaby => {
-      if(this.wallaby === null) this.wallaby = wallaby;
-      this.logger = this.wallaby.logger;
+      this.wallaby = w  || wallaby;
+      this.logger = wallaby.logger;
       this.logger.debug('STARTED ANGULARFILESORT POSTPROCESSOR');
 
       // if the only file(s) modified were test files, then stop the postprocessor entirely
