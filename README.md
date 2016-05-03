@@ -3,7 +3,7 @@ Wallaby Angular Filesort Postprocessor
 [![Build Status](https://travis-ci.org/ryanwischkaemper/wallaby-angular-filesort.svg?branch=master)](https://travis-ci.org/ryanwischkaemper/wallaby-angular-filesort)
 [![Coverage Status](https://coveralls.io/repos/github/ryanwischkaemper/wallaby-angular-filesort/badge.svg?branch=master)](https://coveralls.io/github/ryanwischkaemper/wallaby-angular-filesort?branch=master)
 [![npm version](https://badge.fury.io/js/wallaby-angular-filesort.svg)](https://badge.fury.io/js/wallaby-angular-filesort)
-
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5628e7765db947bf83d1792fd52dfc3f)](https://www.codacy.com/app/rwischka/wallaby-angular-filesort?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ryanwischkaemper/wallaby-angular-filesort&amp;utm_campaign=Badge_Grade)
 
 #Installation
 
